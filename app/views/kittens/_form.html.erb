@@ -1,8 +1,8 @@
+<p style="color: red"><%= alert %></p>
 <%= form_with(model: kitten) do |form| %>
   <% if kitten.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(kitten.errors.count, "error") %> prohibited this kitten from being saved:</h2>
-
       <ul>
         <% kitten.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,27 +10,22 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
-
   <div>
     <%= form.label :age, style: "display: block" %>
-    <%= form.text_field :age %>
+    <%= form.number_field :age %>
   </div>
-
   <div>
     <%= form.label :cuteness, style: "display: block" %>
-    <%= form.text_field :cuteness %>
+    <%= form.number_field :cuteness , min:0, max:15 %>
   </div>
-
   <div>
     <%= form.label :softness, style: "display: block" %>
-    <%= form.text_field :softness %>
+    <%= form.number_field :softness , min:0, max:15 %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
